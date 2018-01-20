@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Substrate</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #default {
+      background-color: white;
+      border: solid 1px black;
+      height: 400px;
+      width: 400px;
+      margin: 40px;
+    }
+
+    #noSandPainter {
+      background-color: white;
+      border: solid 1px black;
+      height: 400px;
+      width: 400px;
+      margin: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="default.html">
+    <canvas id="default"></canvas>
+  </a>
+  <a href="no-sand-painter.html">
+    <canvas id="noSandPainter"></canvas>
+  </a>
+
+  <script src="substrate.js"></script>
+  <script>
+    window.onload = function () {
+      var Substrate = window.substrate.Substrate;
+
+      var defaultCanvas = document.getElementById('default');
+      defaultCanvas.width = 400;
+      defaultCanvas.height = 400;
+
+      var noSandPainterCanvas = document.getElementById('noSandPainter');
+      noSandPainterCanvas.width = 400;
+      noSandPainterCanvas.height = 400;
+
+      new Substrate({
+        canvas: defaultCanvas,
+        maxCracks: 50
+      }).start();
+
+      new Substrate({
+        canvas: noSandPainterCanvas,
+        maxCracks: 50,
+        enableSandPainter: false
+      }).start();
+    };
+  </script>
+</body>
+
+</html>
